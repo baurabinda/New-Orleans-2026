@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="theme-color" content="#fbfaf7"/>
+<title>New Orleans — Travel Guide</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --paper:#fbfaf7; --ink:#231f1a; --muted:#6f6960; --line:#ddd7cd; --soft:#f2f0ea;
+  --blue:#204d73; --moss:#52705a; --gold:#b47d31; --teal:#2f7478; --brick:#9a4d3f; --gray:#77736c;
+  --max:860px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.55}
+a{color:#215a78;text-decoration:none;border-bottom:1px solid #bfd0d9}
+a:active{opacity:.75}
+.wrap{width:min(100% - 32px,var(--max));margin:auto}
+.serif{font-family:"Newsreader",Georgia,serif}
+.mono{font-family:"IBM Plex Mono",monospace}
+.kicker{font:500 .7rem/1.3 "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.cover{padding:34px 0 26px}
+.colorbar{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-bottom:28px}
+.colorbar i{height:7px;display:block}
+.cover h1{font:400 clamp(3.6rem,16vw,5.5rem)/.88 "Newsreader",Georgia,serif;letter-spacing:-.04em;margin:8px 0 12px}
+.cover .subtitle{font:italic 1.16rem "Newsreader",Georgia,serif;color:#4b463f;margin-bottom:8px}
+.cover .dates{font:.8rem "IBM Plex Mono",monospace;letter-spacing:.05em}
+.howto{margin-top:30px;border-top:2px solid var(--ink);padding-top:16px;max-width:700px}
+.howto h2{font:400 1.7rem "Newsreader",Georgia,serif;margin:0 0 10px}
+.howto p{margin:7px 0;font-size:.94rem}
+.legend{margin-top:22px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;gap:9px;font-size:.86rem}
+.pill{display:inline-block;font:600 .61rem/1.2 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;padding:4px 7px;border-radius:999px;margin:2px 4px 2px 0;color:#fff;vertical-align:middle}
+.pill.booked{background:var(--blue)}
+.pill.reserve{background:var(--brick)}
+.pill.paid{background:var(--gold);color:#fff}
+.pill.register{background:var(--teal)}
+.pill.free{background:var(--moss)}
+.pill.optional{background:#e4e1db;color:#4d4943;border:1px solid #c8c3ba}
+.pill.party{background:transparent;color:#555;border:1px solid #aaa}
+.pill.party.all{border-color:var(--moss);color:#3f624b}
+.pill.party.lp{border-color:var(--brick);color:#7b4036}
+.pill.party.stan{border-color:var(--teal);color:#28686c}
+.sticky{position:sticky;top:0;z-index:50;background:rgba(251,250,247,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.nav{display:flex;gap:6px;overflow-x:auto;padding:9px 0;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{flex:0 0 auto;border:0;border-radius:999px;padding:7px 10px;font:.7rem "IBM Plex Mono",monospace;letter-spacing:.04em;background:#efede7;color:#34312d}
+.section{padding:34px 0}
+.section-title{font:400 2.3rem/1 "Newsreader",Georgia,serif;margin:5px 0 10px}
+.section-intro{color:#555;max-width:680px;margin:0 0 20px}
+.tripfacts{display:grid;grid-template-columns:1fr;gap:14px;margin:18px 0 28px}
+.fact{border-top:1px solid var(--ink);padding-top:8px}
+.fact strong{display:block;margin:3px 0}
+.glance{display:grid;gap:0;border-top:1px solid var(--ink)}
+.glance-row{padding:12px 0;border-bottom:1px solid var(--line);color:inherit;text-decoration:none}
+.glance-row[href]{cursor:pointer}
+.glance-row[href]:hover{background:#f5f3ee}
+.glance-date{font:.72rem "IBM Plex Mono",monospace;color:var(--muted);margin-bottom:3px}
+.glance-plan{font-size:.93rem}
+.glance-status{font-size:.82rem;color:var(--muted);margin-top:5px}
+.day{scroll-margin-top:72px;margin:40px 0 52px}
+.day-head{border-top:8px solid var(--accent);padding:10px 0 14px;border-bottom:1px solid var(--ink)}
+.day-top{display:flex;justify-content:space-between;gap:10px;color:var(--accent)}
+.day-title-grid{display:grid;grid-template-columns:74px 1fr;gap:14px;align-items:start;margin-top:8px}
+.day-num{font:400 3.1rem/.9 "Newsreader",Georgia,serif}
+.day-date{font:.62rem "IBM Plex Mono",monospace;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.day h3{font:400 1.8rem/1.08 "Newsreader",Georgia,serif;margin:0}
+.theme{font:italic 1rem/1.45 "Newsreader",Georgia,serif;color:#555;margin:7px 0 0}
+.block{display:grid;grid-template-columns:78px 1fr;gap:12px;padding-top:15px}
+.time{font:500 .71rem/1.35 "IBM Plex Mono",monospace;white-space:pre-line}
+.block-body{min-width:0;border-top:1px solid #e5e1d8;padding-top:9px}
+.block-body.fixed{border-left:3px solid var(--blue);background:#edf2f6;padding:11px 12px;border-top:0}
+.block-body.choice{border-left:3px solid var(--gold);background:#f8f1e5;padding:11px 12px;border-top:0}
+.block-label{font:.63rem "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:#8a857b;margin-bottom:4px}
+.block-title{font:400 1.3rem/1.18 "Newsreader",Georgia,serif;margin:4px 0 5px}
+.block p{font-size:.9rem;margin:7px 0 0}
+.badges{margin:0 0 7px}
+.callout{margin-top:10px;padding:9px 0;border-top:1px solid var(--accent);border-bottom:1px solid var(--accent)}
+.callout.know{border:0;background:var(--soft);padding:9px 11px}
+.callout.action{border:1.5px solid var(--brick);padding:9px 11px;background:#fbf3f1}
+.callout.optional{border-top:1px dashed #aaa;border-bottom:1px dashed #aaa}
+.callout .label{font:600 .62rem "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.callout.action .label{color:var(--brick)}
+.callout p{margin:5px 0 0}
+.branch{margin:13px 0 0;padding:12px;border:1px solid var(--line);background:#fff}
+.branch h4{font:400 1.15rem/1.2 "Newsreader",Georgia,serif;margin:4px 0}
+.branch p{margin:6px 0 0;font-size:.88rem}
+.source{font:.72rem "IBM Plex Mono",monospace;margin-top:9px}
+.source a{border-bottom:1px dotted #9fb2bc}
+.commit-grid{display:grid;gap:10px;margin-top:16px}
+.commit{border:1px solid var(--line);padding:12px;border-left:5px solid var(--accent)}
+.commit strong{display:block;margin:4px 0}
+.commit p{font-size:.86rem;color:#555;margin:5px 0 0}
+.res-grid{display:grid;gap:10px}
+.res{border:1px solid var(--line);padding:12px;border-left:5px solid var(--accent)}
+.res-date{font:.7rem "IBM Plex Mono",monospace;color:var(--muted)}
+.res-what{font:500 1rem;margin:4px 0}
+.res-detail{font-size:.86rem;color:#555}
+.res-conf{font:.76rem/1.4 "IBM Plex Mono",monospace;margin-top:7px;overflow-wrap:anywhere}
+.checks{padding-left:1.2rem}
+.checks li{margin:10px 0}
+.note{font-size:.84rem;color:#5f5a52}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:#777;font:.68rem "IBM Plex Mono",monospace;text-align:center}
+@media (min-width:700px){
+  .glance-row{display:grid;grid-template-columns:95px 1fr 210px;gap:16px}
+  .glance-date,.glance-status{margin:0}
+  .tripfacts{grid-template-columns:1fr 1fr}
+  .block{grid-template-columns:110px 1fr;gap:22px}
+  .time{font-size:.78rem}
+  .commit-grid,.res-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:430px){
+  .wrap{width:min(100% - 24px,var(--max))}
+  .block{grid-template-columns:65px 1fr;gap:9px}
+  .day-title-grid{grid-template-columns:62px 1fr;gap:12px}
+  .day-num{font-size:2.75rem}
+  .day h3{font-size:1.55rem}
+  .block p{font-size:.88rem}
+}
+@media print{
+  .sticky{display:none}
+  body{background:#fff}
+  .day,.res,.commit{break-inside:avoid-page}
+  a{color:inherit;border:0}
+}
+</style>
+</head>
+<body>
+<header class="cover">
+<div class="wrap">
+  <div class="colorbar">
+    <i style="background:#204d73"></i><i style="background:#52705a"></i><i style="background:#b47d31"></i><i style="background:#9a4d3f"></i><i style="background:#2f7478"></i>
+  </div>
+  <div class="kicker">Working travel guide · version 1</div>
+  <h1>New<br/>Orleans</h1>
+  <div class="subtitle">The river · the Creole city · the American city · memory &amp; reinvention</div>
+  <div class="dates">November 17–20, 2026 · Laura, Peter &amp; Stan</div>
+
+  <section class="howto">
+    <div class="kicker">How to use this guide</div>
+    <h2>Keep the structure. Preserve the choices.</h2>
+    <p><strong>Wednesday and Thursday are the real sightseeing days.</strong> Tuesday is an arrival evening; Friday is an airport morning.</p>
+    <p>The colored pills show how much commitment an activity creates. The outlined pills show who the activity fits best. Evening branches are intentionally unresolved until Stan’s dinner plans are clearer.</p>
+    <p><strong>Last research check:</strong> November 11, 2026. Live transit, vessel assignment, weather and any event changes should still be checked close to departure.</p>
+  </section>
+
+  <div class="legend">
+    <div><span class="pill booked">Booked / fixed</span> Protect this time.</div>
+    <div><span class="pill reserve">Paid / reserve</span> A real commitment once booked; reserve soon if chosen.</div>
+    <div><span class="pill paid">Paid / flexible</span> Costs money, but does not meaningfully lock the day.</div>
+    <div><span class="pill register">Free / register</span> No or low cost, but requires a sign-up or reserved place.</div>
+    <div><span class="pill free">Free / drop-in</span> Lowest commitment; easy to add or skip.</div>
+    <div><span class="pill party all">All 3</span> <span class="pill party lp">Laura + Peter</span> <span class="pill party stan">Stan possible</span> Best-fit shorthand, not a rule.</div>
+  </div>
+</div>
+</header>
+
+<div class="sticky"><div class="wrap"><nav class="nav">
+  <a href="#overview">Overview</a>
+  <a href="#tuesday">Tue</a>
+  <a href="#wednesday">Wed</a>
+  <a href="#thursday">Thu</a>
+  <a href="#friday">Fri</a>
+  <a href="#decisions">Book / Verify</a>
+  <a href="#reservations">Reservations</a>
+</nav></div></div>
+
+<main>
+<section class="section" id="overview">
+<div class="wrap">
+  <div class="kicker">Part I</div>
+  <h2 class="section-title">Trip at a Glance</h2>
+  <p class="section-intro">A deliberately compact trip: two full days organized around how New Orleans grew, who shaped it, and how the river, architecture and infrastructure still organize the city.</p>
+
+  <div class="tripfacts">
+    <div class="fact">
+      <div class="kicker">Base</div>
+      <strong>The Westin New Orleans</strong>
+      <div class="note">100 Iberville St · Bienville Suite for Laura + Peter · chosen primarily because Stan’s friends are staying here.</div>
+    </div>
+    <div class="fact">
+      <div class="kicker">Flight reality</div>
+      <strong>Arrive Tue 5:52 PM · depart Fri 12:33 PM</strong>
+      <div class="note">Do not treat Tuesday or Friday as sightseeing days.</div>
+    </div>
+    <div class="fact">
+      <div class="kicker">Narrative</div>
+      <strong>Creole city → American expansion → modern city</strong>
+      <div class="note">Use neighborhoods, cemeteries, art, infrastructure and the river to understand the city rather than collecting “top sights.”</div>
+    </div>
+    <div class="fact">
+      <div class="kicker">Stan strategy</div>
+      <strong>Shared low-walking experiences + flexible separation</strong>
+      <div class="note">Keep river cruise / easy meals available for all three; use longer walks and evening lectures when Stan is with friends.</div>
+    </div>
+  </div>
+
+  <div class="glance">
+    <a class="glance-row" href="#tuesday">
+      <div class="glance-date">Tue 11/17</div>
+      <div class="glance-plan">MSY 5:52 → Westin → easy dinner → optional riverfront/French Quarter peek</div>
+      <div class="glance-status">No ticketed plans</div>
+    </a>
+    <a class="glance-row" href="#wednesday">
+      <div class="glance-date">Wed 11/18</div>
+      <div class="glance-plan">St. Louis Cemetery No. 1 → NOMA curator talk → Besthoff → evening branch</div>
+      <div class="glance-status">Cemetery + evening still to decide/book</div>
+    </a>
+    <a class="glance-row" href="#thursday">
+      <div class="glance-date">Thu 11/19</div>
+      <div class="glance-plan">St. Charles streetcar → Garden District architecture → city-development afternoon → evening branch</div>
+      <div class="glance-status">Garden tour should be booked; evening depends on Stan</div>
+    </a>
+    <a class="glance-row" href="#friday">
+      <div class="glance-date">Fri 11/20</div>
+      <div class="glance-plan">Breakfast → pack/check out → leave Westin about 9:15–9:30 → MSY 12:33</div>
+      <div class="glance-status">No sightseeing</div>
+    </a>
+  </div>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="kicker">Part II</div>
+<h2 class="section-title">Detailed Daily Guide</h2>
+<p class="section-intro">Times are deliberately realistic. Fixed or time-sensitive programming gets protected; everything else is designed to breathe.</p>
+
+<article class="day" id="tuesday" style="--accent:#6f6960">
+<header class="day-head">
+  <div class="day-top kicker"><span>Arrival</span><span>Tuesday</span></div>
+  <div class="day-title-grid">
+    <div><div class="day-num">17</div><div class="day-date">November</div></div>
+    <div><h3>Arrive Gently</h3><p class="theme">Get Stan settled, orient to the river, and do not manufacture a “first night” agenda.</p></div>
+  </div>
+</header>
+
+<div class="block">
+  <div class="time">5:52 PM</div>
+  <div class="block-body fixed">
+    <div class="badges"><span class="pill booked">Booked / fixed</span><span class="pill party all">All 3</span></div>
+    <div class="block-label">AA 1251 · DFW → MSY</div>
+    <div class="block-title">Arrive New Orleans</div>
+    <p>Allow generous time for deplaning, bags, Stan’s airport assistance and the ride downtown. A realistic hotel arrival is around 7:00–7:30 PM, not 6:30.</p>
+  </div>
+</div>
+
+<div class="block">
+  <div class="time">Evening</div>
+  <div class="block-body">
+    <div class="badges"><span class="pill free">Free / drop-in</span><span class="pill party all">All 3</span></div>
+    <div class="block-title">Westin + Easy Dinner</div>
+    <p>Check in, get Stan comfortable, and eat close to the hotel. If everyone still has energy, take a short look at the Mississippi / French Quarter edge. Nothing should require a reservation or a deadline tonight.</p>
+    <div class="callout know">
+      <div class="label">Why this restraint matters</div>
+      <p>The trip is only short if you count calendar days. In usable sightseeing time, Wednesday and Thursday are the trip. Protect them by not turning arrival night into an endurance test.</p>
+    </div>
+  </div>
+</div>
+</article>
+
+<article class="day" id="wednesday" style="--accent:#204d73">
+<header class="day-head">
+  <div class="day-top kicker"><span>Burial culture + art + the river</span><span>Wednesday</span></div>
+  <div class="day-title-grid">
+    <div><div class="day-num">18</div><div class="day-date">November</div></div>
+    <div><h3>Death, Memory + Contemporary New Orleans</h3><p class="theme">Start with one of the city’s oldest landscapes, then move into contemporary art and a choice between the Mississippi and Algiers Point.</p></div>
+  </div>
+</header>
+
+<div class="block">
+  <div class="time">Target<br/>9:30 AM</div>
+  <div class="block-body choice">
+    <div class="badges"><span class="pill reserve">Paid / reserve</span><span class="pill party lp">Laura + Peter</span><span class="pill party stan">Stan possible</span></div>
+    <div class="block-label">Approx. 55 min · official access only</div>
+    <div class="block-title">St. Louis Cemetery No. 1</div>
+    <p>Reserve an early official tour so the cemetery does not consume the middle of the day. Check in 15 minutes early at Basin St. Station, 501 Basin St. The cemetery is not open for independent visits.</p>
+    <div class="callout">
+      <div class="label">Why this matters</div>
+      <p class="serif">The above-ground tombs are not just visual shorthand for New Orleans. Use the tour to understand burial practice, Catholic institutions, race and status, preservation, and the way a “city of the dead” became part of the city’s public identity.</p>
+    </div>
+    <div class="callout know">
+      <div class="label">Stan note</div>
+      <p>The operator says wheelchairs and scooters are allowed and the pathway is maneuverable, but the tour is still about 55 minutes. This is easiest as a Laura + Peter activity unless Stan has mobility support and wants to come.</p>
+    </div>
+    <div class="source"><a href="https://cemeterytourneworleans.com/tour/day-tour/" target="_blank" rel="noopener">Official cemetery tour →</a></div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="time">10:30 AM<br/>– noon</div>
+  <div class="block-body">
+    <div class="badges"><span class="pill free">Flexible time</span></div>
+    <div class="block-title">Coffee / Early Lunch + Transfer to City Park</div>
+    <p>Do not insert another attraction. Eat early enough that the 12:30 curator talk feels calm, then rideshare to NOMA. Aim to reach the museum around noon.</p>
+  </div>
+</div>
+
+<div class="block">
+  <div class="time">12:00–<br/>3:15 PM</div>
+  <div class="block-body choice">
+    <div class="badges"><span class="pill paid">Paid / flexible</span><span class="pill party lp">Laura + Peter</span></div>
+    <div class="block-label">NOMA · out-of-state adult admission $23</div>
+    <div class="block-title">NOMA + Danielle Mckinney: <em>Shelter</em></div>
+    <p>Enter around noon. At <strong>12:30–1:00 PM</strong>, Chief Curator Anne Collins Smith gives a gallery talk on <em>Danielle Mckinney: Shelter</em>. A general public museum tour follows at <strong>2:00–3:00 PM</strong>; join only if it adds value after the curator talk.</p>
+    <div class="callout">
+      <div class="label">Priority</div>
+      <p class="serif">The date-specific curator talk is the reason to anchor Wednesday here. Do not try to “complete” the museum; let the talk and the exhibitions that catch you determine the visit.</p>
+    </div>
+    <div class="source"><a href="https://noma.org/events/month/2026-11/" target="_blank" rel="noopener">NOMA November 2026 calendar →</a></div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="time">Approx.<br/>3:15–4:15</div>
+  <div class="block-body">
+    <div class="badges"><span class="pill free">Free / drop-in</span><span class="pill party lp">Laura + Peter</span></div>
+    <div class="block-title">Besthoff Sculpture Garden</div>
+    <p>Finish outside among nearly 100 works in the 12-acre garden. This is intentionally unstructured: art, live oaks, lagoon and landscape rather than another guided program.</p>
+    <div class="callout know">
+      <div class="label">Good to know</div>
+      <p>The sculpture garden is free and open to the public seven days a week. Leave by roughly 4:15 if you want enough reset time before an evening plan.</p>
+    </div>
+    <div class="source"><a href="https://noma.org/besthoff-sculpture-garden-anniversary/" target="_blank" rel="noopener">Besthoff Sculpture Garden →</a></div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="time">Evening</div>
+  <div class="block-body choice">
+    <div class="block-label">Choose one · do not stack these</div>
+    <div class="block-title">Wednesday Evening Branch</div>
+
+    <div class="branch">
+      <div class="badges"><span class="pill reserve">Paid / reserve</span><span class="pill party all">All 3</span></div>
+      <h4>Option A — Mississippi Dinner Jazz Cruise</h4>
+      <p>Best shared option if Stan wants to spend the evening with you. Boarding begins at 6:00 PM; cruising is 7:00–9:00 PM from 400 Toulouse St. Dinner tickets are currently $107.50/adult. Treat the meal as part of the boat experience, not as one of the trip’s destination restaurants.</p>
+      <p><strong>Accessibility:</strong> request the Riverboat CITY OF NEW ORLEANS if possible. Its decks 1–3 are elevator-accessible; NATCHEZ top and bottom decks require stairs. The company may substitute vessels, so call before booking around Stan.</p>
+      <div class="source"><a href="https://www.steamboatnatchez.com/cruises-2/evening-jazz-cruise-with-dinner-option.html" target="_blank" rel="noopener">Dinner cruise →</a> · <a href="https://www.steamboatnatchez.com/about/frequently-asked-questions.html" target="_blank" rel="noopener">Accessibility FAQ →</a></div>
+    </div>
+
+    <div class="branch">
+      <div class="badges"><span class="pill free">Free / low commitment</span><span class="pill party lp">Laura + Peter</span></div>
+      <h4>Option B — History in a Glass, Algiers Point</h4>
+      <p><strong>5:30–6:30 PM</strong> at Cita Dennis Hubbell Library. A talk on classic New Orleans hotel bars and signature drinks, with recipes and samples. Pair it with the Canal–Algiers Point ferry if the live schedule works. The event listing shows no fee or registration requirement.</p>
+      <div class="source"><a href="https://neworleans.libnet.info/event/17214296" target="_blank" rel="noopener">Official library event →</a></div>
+    </div>
+
+    <div class="branch">
+      <div class="badges"><span class="pill optional">Optional</span><span class="pill party all">All 3</span></div>
+      <h4>Option C — Dinner only</h4>
+      <p>If Stan wants dinner but not a cruise—or everyone is tired—have a good dinner together and stop. The trip does not need a programmed evening every night.</p>
+    </div>
+  </div>
+</div>
+</article>
+
+<article class="day" id="thursday" style="--accent:#9a4d3f">
+<header class="day-head">
+  <div class="day-top kicker"><span>The American city</span><span>Thursday</span></div>
+  <div class="day-title-grid">
+    <div><div class="day-num">19</div><div class="day-date">November</div></div>
+    <div><h3>Upriver: Americans, Architecture + a City Made Buildable</h3><p class="theme">Follow New Orleans beyond the Creole core into the American city, then use the afternoon and evening to connect growth with infrastructure, preservation and commerce.</p></div>
+  </div>
+</header>
+
+<div class="block">
+  <div class="time">Approx.<br/>9:00 AM</div>
+  <div class="block-body">
+    <div class="badges"><span class="pill paid">Paid / flexible</span><span class="pill party lp">Laura + Peter</span></div>
+    <div class="block-label">Transit as part of the experience</div>
+    <div class="block-title">St. Charles Streetcar → Garden District</div>
+    <p>Leave enough time to ride the streetcar rather than defaulting to a car. Use live RTA/Le Pass information that morning and the tour confirmation for the exact meeting point.</p>
+    <div class="callout">
+      <div class="label">Interpretive lens</div>
+      <p class="serif">You are moving upriver from the old Creole city toward districts shaped by American newcomers after the Louisiana Purchase. Treat the journey itself as part of the historical sequence.</p>
+    </div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="time">10:00 AM<br/>– noon</div>
+  <div class="block-body choice">
+    <div class="badges"><span class="pill reserve">Paid / reserve</span><span class="pill party lp">Laura + Peter</span></div>
+    <div class="block-label">$40/person · 2 hours · daily 10 AM + 1 PM</div>
+    <div class="block-title">Garden District Architecture Walking Tour</div>
+    <p>Book the 10:00 AM NOLA Tours walk. Its stated framing is exactly the story you want: American newcomers building upriver from a Creole city that did not readily absorb them, expressed through Greek Revival, Italianate, Queen Anne and other residential architecture.</p>
+    <div class="callout">
+      <div class="label">What to ask / notice</div>
+      <p class="serif">Push beyond “beautiful houses.” Ask about the former City of Lafayette, annexation, wealth and slavery, lot patterns, domestic service, architectural fashion, and how the Garden District related to the older Creole city.</p>
+    </div>
+    <div class="source"><a href="https://nolatours.com/walking-tours/" target="_blank" rel="noopener">NOLA Tours official page →</a></div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="time">Noon–<br/>1:30 PM</div>
+  <div class="block-body">
+    <div class="badges"><span class="pill free">Flexible</span><span class="pill party lp">Laura + Peter</span></div>
+    <div class="block-title">Lunch + Garden District / Magazine Street Wandering</div>
+    <p>Eat nearby and leave some unstructured time. Do not turn the neighborhood into a mansion checklist. If something catches your attention, follow it.</p>
+  </div>
+</div>
+
+<div class="block">
+  <div class="time">Approx.<br/>1:45–3:15</div>
+  <div class="block-body choice">
+    <div class="block-label">Choose one afternoon direction</div>
+    <div class="block-title">Infrastructure or Southern Art</div>
+
+    <div class="branch">
+      <div class="badges"><span class="pill free">Free / drop-in</span><span class="pill party lp">Laura + Peter</span></div>
+      <h4>Preferred if confirmed — HNOC “The Pumps That Sank New Orleans”</h4>
+      <p>The Historic New Orleans Collection offers a free ~20-minute Shortcut Talk at <strong>2:00 PM</strong> about the pumping and sewer technologies that enabled New Orleans to expand while contributing to subsidence. This is almost perfectly aligned with your interest in infrastructure and city development.</p>
+      <p><strong>Catch:</strong> the 2:00 PM talks rotate. Contact HNOC before the trip or ask that morning whether this topic is running. If it is not, do not reorganize the day around it.</p>
+      <div class="source"><a href="https://hnoc.org/visit/tours/shortcuts/the-pumps-that-sank-new-orleans" target="_blank" rel="noopener">HNOC Shortcut Talk →</a></div>
+    </div>
+
+    <div class="branch">
+      <div class="badges"><span class="pill paid">Paid / flexible</span><span class="pill party lp">Laura + Peter</span></div>
+      <h4>Alternate — Ogden Museum of Southern Art</h4>
+      <p>Adult admission is $15 and can be purchased on arrival. The museum’s Thursday <strong>Hey Y’all Art Talk</strong> runs 1:00–2:00 PM and is included with admission. Only aim for the 1:00 talk if the Garden District morning and lunch naturally allow it; otherwise visit independently or skip Ogden entirely.</p>
+      <div class="source"><a href="https://ogdenmuseum.org/event/hey-yall-art-talk-19/2026-11-19/" target="_blank" rel="noopener">Nov. 19 art talk →</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="time">Mid-<br/>afternoon</div>
+  <div class="block-body">
+    <div class="badges"><span class="pill free">Free / drop-in</span></div>
+    <div class="block-title">Return to Westin + Real Break</div>
+    <p>Protect at least an hour to sit down, change, check in with Stan and decide the evening. This is the hinge between a full day and an over-scheduled one.</p>
+  </div>
+</div>
+
+<div class="block">
+  <div class="time">Evening</div>
+  <div class="block-body choice">
+    <div class="block-label">Choose based on Stan’s dinner plans</div>
+    <div class="block-title">Thursday Evening Branch</div>
+
+    <div class="branch">
+      <div class="badges"><span class="pill register">Free / register</span><span class="pill party lp">Laura + Peter</span></div>
+      <h4>Option A — Before You Renovate</h4>
+      <p><strong>5:30–7:00 PM</strong> at the Preservation Resource Center, 923 Tchoupitoulas St. Architect/preservationist Alex Barthel uses New Orleans homes to demonstrate zoning, historic districts, property history, Sanborn maps and renovation research. Free/pay-what-you-can; registration is available.</p>
+      <div class="source"><a href="https://prcno.org/event/before-you-renovate-a-practical-guide-to-evaluating-your-historic-home-with-architect-preservationist-alex-barthel-nov-2026/" target="_blank" rel="noopener">PRC event →</a></div>
+    </div>
+
+    <div class="branch">
+      <div class="badges"><span class="pill free">Free? / verify</span><span class="pill party lp">Laura + Peter</span></div>
+      <h4>Option B — Krauss, Trains and Storyville</h4>
+      <p><strong>7:00–8:30 PM</strong> at East Bank Regional Library, 4747 W. Napoleon Ave., Metairie. Historian Edward Branley connects the Krauss department store, the former Canal/Basin terminal and Storyville. The library listing does not state a fee or registration requirement; verify before going. Rideshare is the practical choice.</p>
+      <div class="source"><a href="https://calendar.jplibrary.net/event/third-thursday-lecture-27502" target="_blank" rel="noopener">Jefferson Parish Library event →</a></div>
+    </div>
+
+    <div class="branch">
+      <div class="badges"><span class="pill reserve">Paid / reserve</span><span class="pill party all">All 3</span></div>
+      <h4>Option C — Move the Dinner Cruise Here</h4>
+      <p>If Wednesday works better for Algiers / Stan’s friends, use Thursday for the dinner cruise instead. Do not book both a lecture and the cruise.</p>
+    </div>
+
+    <div class="branch">
+      <div class="badges"><span class="pill optional">Optional</span><span class="pill party all">All 3</span></div>
+      <h4>Option D — Dinner with Stan</h4>
+      <p>If Stan wants dinner together, that wins. The evening programs are bonuses, not obligations.</p>
+    </div>
+  </div>
+</div>
+</article>
+
+<article class="day" id="friday" style="--accent:#6f6960">
+<header class="day-head">
+  <div class="day-top kicker"><span>Departure</span><span>Friday</span></div>
+  <div class="day-title-grid">
+    <div><div class="day-num">20</div><div class="day-date">November</div></div>
+    <div><h3>Breakfast + Airport</h3><p class="theme">No final attraction. A calm departure with Stan is worth more than squeezing in one last sight.</p></div>
+  </div>
+</header>
+
+<div class="block">
+  <div class="time">Morning</div>
+  <div class="block-body">
+    <div class="badges"><span class="pill free">Flexible</span><span class="pill party all">All 3</span></div>
+    <div class="block-title">Breakfast + Pack</div>
+    <p>Keep the morning simple. Peter can take an early riverfront walk if he wakes at his usual hour, but nothing should involve tickets, transportation or a hard return time.</p>
+  </div>
+</div>
+
+<div class="block">
+  <div class="time">9:15–<br/>9:30 AM</div>
+  <div class="block-body fixed">
+    <div class="badges"><span class="pill booked">Fixed</span><span class="pill party all">All 3</span></div>
+    <div class="block-title">Leave Westin for MSY</div>
+    <p>Build in time for traffic, check-in/security and Stan’s assistance rather than targeting the minimum possible airport buffer.</p>
+  </div>
+</div>
+
+<div class="block">
+  <div class="time">12:33 PM</div>
+  <div class="block-body fixed">
+    <div class="badges"><span class="pill booked">Booked / fixed</span></div>
+    <div class="block-label">AA 2682 · MSY → DFW</div>
+    <div class="block-title">Depart New Orleans</div>
+    <p>Scheduled arrival DFW 2:29 PM, followed by the connection home to Tucson.</p>
+  </div>
+</div>
+</article>
+</div>
+</section>
+
+<section class="section" id="decisions">
+<div class="wrap">
+  <div class="kicker">Part III</div>
+  <h2 class="section-title">Book / Verify Now</h2>
+  <p class="section-intro">These are the items worth resolving before departure. The point is to lock the genuinely important things while leaving Stan-dependent evenings flexible.</p>
+
+  <div class="commit-grid">
+    <div class="commit" style="--accent:#9a4d3f">
+      <span class="pill reserve">Book soon</span>
+      <strong>Garden District Architecture Tour</strong>
+      <p>Target Thu Nov. 19 at 10:00 AM. This is one of the trip’s core experiences.</p>
+    </div>
+    <div class="commit" style="--accent:#9a4d3f">
+      <span class="pill reserve">Book soon</span>
+      <strong>St. Louis Cemetery No. 1</strong>
+      <p>Target Wed Nov. 18 around 9:30 AM. Tours are capped at 20 and advance booking is recommended.</p>
+    </div>
+    <div class="commit" style="--accent:#9a4d3f">
+      <span class="pill reserve">Decide with Stan</span>
+      <strong>Dinner Jazz Cruise</strong>
+      <p>Choose Wednesday or Thursday. Before paying, call about the actual vessel and elevator access; the operator can substitute NATCHEZ / CITY OF NEW ORLEANS.</p>
+    </div>
+    <div class="commit" style="--accent:#2f7478">
+      <span class="pill register">Verify / request</span>
+      <strong>Stan’s Westin bathroom</strong>
+      <p>Confirm a mobility-accessible room with a true roll-in/zero-threshold shower, fold-down seat, grab bars and handheld shower—not merely an accessible tub.</p>
+    </div>
+    <div class="commit" style="--accent:#2f7478">
+      <span class="pill register">Register if wanted</span>
+      <strong>Before You Renovate</strong>
+      <p>Thu Nov. 19, 5:30–7:00 PM. Free/pay-what-you-can, but reserve a place if you want to preserve the option.</p>
+    </div>
+    <div class="commit" style="--accent:#52705a">
+      <span class="pill free">Verify topic</span>
+      <strong>HNOC Pumps Talk</strong>
+      <p>Ask whether “The Pumps That Sank New Orleans” is the rotating 2:00 PM Shortcut Talk on Thu Nov. 19.</p>
+    </div>
+  </div>
+
+  <h3 class="serif" style="font-size:1.7rem;margin:32px 0 8px">Deliberately Not Locked Yet</h3>
+  <ul class="checks">
+    <li><strong>Wednesday evening:</strong> dinner cruise with Stan vs. History in a Glass if Stan is with friends.</li>
+    <li><strong>Thursday evening:</strong> dinner with Stan vs. preservation workshop vs. Krauss/Trains/Storyville; move the cruise here if needed.</li>
+    <li><strong>Thursday afternoon:</strong> HNOC pumps talk if confirmed; Ogden is an alternate, not another obligation.</li>
+    <li><strong>Restaurants:</strong> keep most meals flexible until Stan’s social plans are clear. The trip already has enough scheduled structure.</li>
+  </ul>
+</div>
+</section>
+
+<section class="section" id="reservations">
+<div class="wrap">
+  <div class="kicker">Part IV</div>
+  <h2 class="section-title">Reservations &amp; Quick Reference</h2>
+  <p class="section-intro">Confirmed travel plus the items most likely to become bookings. Add confirmation numbers here as reservations are made.</p>
+
+  <div class="res-grid">
+    <div class="res" style="--accent:#204d73">
+      <div class="res-date">Nov 17–20</div>
+      <div class="res-what">The Westin New Orleans</div>
+      <div class="res-detail">100 Iberville St · Bienville Suite for Laura + Peter</div>
+      <div class="res-conf">Stan’s accessible room configuration: VERIFY</div>
+    </div>
+    <div class="res" style="--accent:#204d73">
+      <div class="res-date">Tue Nov 17</div>
+      <div class="res-what">AA 1251 DFW → MSY</div>
+      <div class="res-detail">4:20 PM → 5:52 PM</div>
+      <div class="res-conf">AA confirmation: KOJXVI</div>
+    </div>
+    <div class="res" style="--accent:#204d73">
+      <div class="res-date">Fri Nov 20</div>
+      <div class="res-what">AA 2682 MSY → DFW</div>
+      <div class="res-detail">12:33 PM → 2:29 PM · 3h25 connection shown</div>
+      <div class="res-conf">AA confirmation: KOJXVI</div>
+    </div>
+    <div class="res" style="--accent:#9a4d3f">
+      <div class="res-date">Wed Nov 18</div>
+      <div class="res-what">St. Louis Cemetery No. 1</div>
+      <div class="res-detail">Target ~9:30 AM · 55 min</div>
+      <div class="res-conf">TO BOOK</div>
+    </div>
+    <div class="res" style="--accent:#b47d31">
+      <div class="res-date">Wed Nov 18</div>
+      <div class="res-what">NOMA curator talk</div>
+      <div class="res-detail">12:30–1:00 PM · Danielle Mckinney: Shelter</div>
+      <div class="res-conf">Museum admission: paid / flexible</div>
+    </div>
+    <div class="res" style="--accent:#9a4d3f">
+      <div class="res-date">Thu Nov 19</div>
+      <div class="res-what">Garden District Architecture Tour</div>
+      <div class="res-detail">Target 10:00 AM · 2 hours · $40/person</div>
+      <div class="res-conf">TO BOOK</div>
+    </div>
+    <div class="res" style="--accent:#52705a">
+      <div class="res-date">Wed Nov 18</div>
+      <div class="res-what">History in a Glass</div>
+      <div class="res-detail">5:30–6:30 PM · Cita Dennis Hubbell Library, Algiers Point</div>
+      <div class="res-conf">OPTION · no fee/registration shown on listing</div>
+    </div>
+    <div class="res" style="--accent:#2f7478">
+      <div class="res-date">Thu Nov 19</div>
+      <div class="res-what">Before You Renovate</div>
+      <div class="res-detail">5:30–7:00 PM · Preservation Resource Center</div>
+      <div class="res-conf">OPTION · free/pay what you can · registration available</div>
+    </div>
+    <div class="res" style="--accent:#52705a">
+      <div class="res-date">Thu Nov 19</div>
+      <div class="res-what">Krauss, Trains and Storyville</div>
+      <div class="res-detail">7:00–8:30 PM · East Bank Regional Library, Metairie</div>
+      <div class="res-conf">OPTION · fee/registration not stated; verify</div>
+    </div>
+    <div class="res" style="--accent:#9a4d3f">
+      <div class="res-date">Wed or Thu</div>
+      <div class="res-what">Mississippi Dinner Jazz Cruise</div>
+      <div class="res-detail">Board 6:00 PM · cruise 7:00–9:00 PM · $107.50/adult currently</div>
+      <div class="res-conf">OPTION · CALL ABOUT VESSEL / ACCESSIBILITY BEFORE BOOKING</div>
+    </div>
+  </div>
+</div>
+</section>
+</main>
+
+<footer><div class="wrap">NEW ORLEANS · 17–20 NOVEMBER 2026 · WORKING GUIDE V1</div></footer>
+</body>
+</html>
